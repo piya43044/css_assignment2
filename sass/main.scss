@@ -1,0 +1,113 @@
+$blue: #0000FF;
+$green:#D8DA3D;
+$orange: #FF7F00;
+$purple: #80007E;
+
+@mixin list {
+    background-color: white;
+    margin: 7px 0px;
+    padding: 5px;
+    width: 170px;
+}
+
+@mixin box {
+    color: black;
+    font-size: large;
+    margin: 20px 0px;
+    padding: 10px;
+    width: 85%;
+
+}
+
+body {
+    background-color: $green;
+    box-sizing: border-box;
+    color: $purple;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    // --------detail class------
+    .detail {
+        margin: -195px 240px;
+        padding: 0;
+        width: 82%;
+    
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        // ---------Date class ---------
+        .date {
+            border-top: 1px dotted $purple;
+            font-style: italic;
+            margin: 50px 0;
+
+            .box1 {
+                @include box;
+                border: 2px dashed black;
+                font-style: normal;
+            }
+
+            .box2 {
+                @include box;
+                border: 2px dashed $orange; 
+                font-style: italic;
+                text-align: right;
+            }
+
+            .box3 {
+                @include box;
+                border: 1px dashed $blue; 
+                font-style: normal;
+                font-weight: bold;
+                text-align: center;
+            }
+        
+            // -------Box-hover-----
+            .box1:hover,
+            .box2:hover,
+            .box3:hover {
+                animation: boxbounce 1s infinite;
+            }
+
+            // ------Date and by myself paragraph-----
+            p {
+                margin: 50px 5px;
+            }
+        }
+
+    }
+
+    // -----------Sidebar class-------
+    .sidebar {
+        ul {
+            list-style-type: none;
+            padding: 10px 0;
+            width: 10%;
+        }
+
+        li:nth-child(even) {
+            @include list;
+            border-right: 15px solid $blue;
+        }
+
+        li:nth-child(odd) {
+            @include list;
+            border-right: 15px solid $orange; 
+            
+        }
+    }
+    
+}
+
+// -------Animation of box------
+@keyframes boxbounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(5px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
